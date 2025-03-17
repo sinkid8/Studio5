@@ -29,17 +29,24 @@ public class GameManager : SingletonMonoBehavior<GameManager>
 
     public void OnBrickDestroyed(Vector3 position)
     {
+        // Trigger camera shake when a brick is destroyed
+        CameraShake.Shake(0.2f, 1f);  // Adjust duration and strength as needed
+
         // fire audio here
         // implement particle effect here
-        // add camera shake here
         currentBrickCount--;
         Debug.Log($"Destroyed Brick at {position}, {currentBrickCount}/{totalBrickCount} remaining");
-        if(currentBrickCount == 0) SceneHandler.Instance.LoadNextScene();
+
+        if (currentBrickCount == 0)
+            SceneHandler.Instance.LoadNextScene();
     }
 
     public void KillBall()
     {
         maxLives--;
+        // Trigger camera shake when the ball is killed
+        CameraShake.Shake(0.3f, 1.5f);   // Adjust duration and strength as needed
+
         // update lives on HUD here
         // game over UI if maxLives < 0, then exit to main menu after delay
         ball.ResetBall();
