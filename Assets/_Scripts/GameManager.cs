@@ -5,6 +5,8 @@ public class GameManager : SingletonMonoBehavior<GameManager>
     [SerializeField] private int maxLives = 3;
     [SerializeField] private Ball ball;
     [SerializeField] private Transform bricksContainer;
+    [SerializeField] private ScoreCounter scoreCounter;
+    [SerializeField] private int score = 0; 
 
     private int currentBrickCount;
     private int totalBrickCount;
@@ -36,6 +38,9 @@ public class GameManager : SingletonMonoBehavior<GameManager>
         // implement particle effect here
         currentBrickCount--;
         Debug.Log($"Destroyed Brick at {position}, {currentBrickCount}/{totalBrickCount} remaining");
+
+        score++;
+        scoreCounter.UpdateScore(score);
 
         if (currentBrickCount == 0)
             SceneHandler.Instance.LoadNextScene();
