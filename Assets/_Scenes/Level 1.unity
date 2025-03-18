@@ -2343,7 +2343,7 @@ MonoBehaviour:
   toUpdate: {fileID: 1774158188}
   scoreTextContainer: {fileID: 581791920}
   duration: 0.4
-  animationCurve: 28
+  animationCurve: 15
 --- !u!1 &1556936334
 GameObject:
   m_ObjectHideFlags: 0
