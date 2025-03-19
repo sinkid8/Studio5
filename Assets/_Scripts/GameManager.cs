@@ -10,6 +10,7 @@ public class GameManager : SingletonMonoBehavior<GameManager>
 
     private int currentBrickCount;
     private int totalBrickCount;
+    public GameObject explosionParticle;
 
     private void OnEnable()
     {
@@ -36,6 +37,7 @@ public class GameManager : SingletonMonoBehavior<GameManager>
 
         // fire audio here
         // implement particle effect here
+        Instantiate(explosionParticle, position, Quaternion.identity);
         currentBrickCount--;
         Debug.Log($"Destroyed Brick at {position}, {currentBrickCount}/{totalBrickCount} remaining");
 
